@@ -1,9 +1,9 @@
 people = 60
 cars = 40
 trucks = 15
+weather = input("How's the weather today? G/B >")
 
-
-if cars > people:
+if cars > people and weather == "G":
     print("We should take the cars.")
 elif cars < people:
     print("We should not take the cars.")

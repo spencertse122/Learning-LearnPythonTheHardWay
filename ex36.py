@@ -85,7 +85,7 @@ def churning_reports(s):
 def creating_drama(s):
     os.system("clear")
 
-    options = ["Rock", "Paper", "Scissors"]
+    options = {1 : "Rock", 2 : "Paper", 3 : "Scissors"}
 
     print("Welcome to our sorority 2.0 challenge")
     print("As a 'well established' company, we love dramas")
@@ -97,14 +97,40 @@ def creating_drama(s):
     """)
     print("Pick your move:")
 
-    m = input("> ")
-    c = options[randint(0,2)]
+    m = int(input("> "))
+    c = randint(1,3)
 
-    if m == c:
-        print("It's a draw")
+    win = False
+    statement = "You have picked {options[m]} and your coworker picked {options[c]}"
+
+    if (m > 3) or (m < 1):
+        print("what the heck was that?")
+        nameis = input("??? ")
         creating_drama(s)
     else:
         pass
+
+    # if (m == 1) & (c == 3):
+    #     print(statement)
+    #     print("You win")
+    #     win = True
+    # elif (m == 3) & (c == 1):
+    #     print(statement)
+    #     print("You lose")
+    #     win = False
+    # elif m > c:
+    #     print(statement)
+    #     print("You win")
+    #     win = True
+    # elif m == c:
+    #     print(statement)
+    #     print("It's a tie")
+    #     # creating_drama(s)
+    # else:
+    #     print("what the heck was that?")
+    #     # creating_drama(s)
+
+    creating_drama(s)
 
 
 ####################################################################

@@ -19,7 +19,7 @@ def show_score(s):
 def make_coffee(s):
     os.system("clear")
     print("It's a long walk, but you have arrived the kitchen!")
-    print("Are you ready to make a coffee? y/n")
+    print("Do you actually need a coffee? y/n")
     choice = input("> ")
     print('-' * 20)
 
@@ -100,43 +100,64 @@ def creating_drama(s):
     m = int(input("> "))
     c = randint(1,3)
 
-    win = False
-    statement = "You have picked {options[m]} and your coworker picked {options[c]}"
+    statement = "\nYou have picked {} and your coworker picked {},\n YOU {}\n"
 
-    if (m > 3) or (m < 1):
-        print("what the heck was that?")
-        nameis = input("??? ")
-        creating_drama(s)
-    else:
-        pass
+    s['moves'] -= 1
 
-    # if (m == 1) & (c == 3):
-    #     print(statement)
-    #     print("You win")
-    #     win = True
-    # elif (m == 3) & (c == 1):
-    #     print(statement)
-    #     print("You lose")
-    #     win = False
-    # elif m > c:
-    #     print(statement)
-    #     print("You win")
-    #     win = True
-    # elif m == c:
-    #     print(statement)
-    #     print("It's a tie")
-    #     # creating_drama(s)
-    # else:
-    #     print("what the heck was that?")
-    #     # creating_drama(s)
-
-    creating_drama(s)
+    if m == 3:
+        if c == 1:
+            win = "LOSS"
+            print(statement.format(options[m], options[c], win))
+            s['happiness'] -= 20
+            print("-20 happiness \n-1 moves \n+0 working hours")
+        elif c == 2:
+            win = "WIN"
+            print(statement.format(options[m], options[c], win))
+            s['happiness'] += 20
+            s['work_hours'] += 1
+            print("+20 happiness \n-1 moves \n+1 working hours")
+        elif c == 3:
+            win = "TIE"
+            print(statement.format(options[m], options[c], win))
+            print("+0 happiness \n-1 moves \n+0 working hours")
+    elif m == 2:
+        if c == 1:
+            win = "WIN"
+            print(statement.format(options[m], options[c], win))
+            s['happiness'] += 20
+            s['work_hours'] += 1
+            print("+20 happiness \n-1 moves \n+1 working hours")
+        elif c == 2:
+            win = "TIE"
+            print(statement.format(options[m], options[c], win))
+            print("+0 happiness \n-1 moves \n+0 working hours")
+        elif c == 3:
+            win = "LOSS"
+            print(statement.format(options[m], options[c], win))
+            s['happiness'] -= 20
+            print("-20 happiness \n-1 moves \n+0 working hours")
+    elif m == 1:
+        if c == 1:
+            win = "TIE"
+            print(statement.format(options[m], options[c], win))
+            print("+0 happiness \n-1 moves \n+0 working hours")
+        elif c == 2:
+            win = "LOSS"
+            print(statement.format(options[m], options[c], win))
+            s['happiness'] -= 20
+            print("-20 happiness \n-1 moves \n+0 working hours")
+        elif c == 3:
+            win = "WIN"
+            print(statement.format(options[m], options[c], win))
+            s['happiness'] += 20
+            s['work_hours'] += 1
+            print("+20 happiness \n-1 moves \n+1 working hours")
 
 
 ####################################################################
 
 def start(s):
-    print("\nWelcome to Office Survivors", flush = True)
+    print("\nWelcome to Office Survivors!\nThis is NOT a game!!!!! You may actually get fired playing it.....be careful", flush = True)
     print("""
           1. Make some coffee
           2. Get some snack
@@ -188,7 +209,7 @@ actions = {
 
 score = {
          "work_hours" : 0,
-         "moves" : 15,
+         "moves" : 8,
          "happiness" : 100,
          "unlog_hours" : 0,
          "sneakout_numbers" : 0

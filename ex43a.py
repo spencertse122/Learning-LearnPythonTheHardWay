@@ -115,7 +115,7 @@ class LaserWeaponArmory(Scene):
 
         code = f"{randint(1,9)}{randint(1,9)}{randint(1,9)}"
         guess = input("[keypad]> ")
-        guesses = 0
+        guesses = 1
 
         while guess != code and guesses < 10:
             print("BZZZZEDDD!")
@@ -242,6 +242,6 @@ class Map(object):
         return self.next_scene(self.start_scene)
 
 # a_map = Map('central_corrido')
-a_map = Map('escape_pod')
+a_map = Map('laser_weapon_armory')
 a_game = Engine(a_map)
 a_game.play()

@@ -1,5 +1,5 @@
 from nose.tools import *
-import office_survivor
+import NAME
 
 def setup():
     print("SETUP!")

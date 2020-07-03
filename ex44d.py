@@ -32,4 +32,5 @@ son.override()
 print('-' * 20)
 
 dad.altered()
+print('-' * 10)
 son.altered()

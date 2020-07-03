@@ -241,7 +241,7 @@ class Map(object):
     def opening_scene(self):
         return self.next_scene(self.start_scene)
 
-# a_map = Map('central_corrido')
-a_map = Map('escape_pod')
+a_map = Map('central_corridor')
+# a_map = Map('escape_pod')
 a_game = Engine(a_map)
 a_game.play()

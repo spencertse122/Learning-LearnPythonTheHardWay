@@ -1,3 +1,6 @@
+# from nose.tools import *
+# For some reason, nose test doesn't work, so we switch to pytest for the rest of the exercise
+
 import pytest
 import NAME
 

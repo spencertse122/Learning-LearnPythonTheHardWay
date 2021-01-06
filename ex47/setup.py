@@ -4,17 +4,16 @@ except ImportError:
     from distutils.core import setup
 
 config = {
-    'description': 'My Project',
-    'author' : 'My Name',
-    'url' : 'URL to get it at.',
+    'description' : 'Exercise 47',
+    'author' : 'Spencer Tse',
+    'url' : 'www.google.com',
     'download_url' : 'Where to download it.',
-    'author_email' : 'My email.',
+    'author_email' : 'spencertse122@gmail.com.',
     'version' : '0.1',
-    'install_requires' : ['nose'],
+    'install_requires' : ['nose', 'pytest'],
     'packages' : ['NAME'],
     'scripts' : [],
-    'name' : 'projectname'
- }
-
+    'name' : 'Learn Python The Hard Way'
+}
 
 setup(**config)

@@ -1,5 +1,4 @@
-from nose.tools import *
-
+import pytest
 import NAME
 
 def setup():

@@ -1,4 +1,5 @@
-from nose.tools import *
+# Create a secondary test to observe how pytest works.
+import pytest
 import NAME
 
 def setup():

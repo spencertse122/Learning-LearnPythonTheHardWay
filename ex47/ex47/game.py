@@ -10,3 +10,6 @@ class Room(object):
 
     def add_paths(self, paths):
         self.paths.update(paths)
+
+    def restart(self):
+        self.paths = {}

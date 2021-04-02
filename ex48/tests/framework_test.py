@@ -27,6 +27,7 @@ def test_getTag():
     Third, test if unknown variables are paresed (e.g. list)
     """
     assert lexicon.getTag('north', lexicon.game_lexicon) == ('direction', 'north')
+    assert lexicon.getTag('North', lexicon.game_lexicon) == ('direction', 'North')
     assert lexicon.getTag('Spencer', lexicon.game_lexicon) == ('noun', 'Spencer')
     assert lexicon.getTag(5, lexicon.game_lexicon) == ('number', 5)
     assert lexicon.getTag([5432,6453,78653,368], lexicon.game_lexicon) == ('error', [5432,6453,78653,368])

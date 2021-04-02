@@ -3,7 +3,8 @@ game_lexicon = {
               'direction' : ['north', 'south', 'east', 'west', 'down', 'up', 'left', 'right', 'back'],
               'verb' : ['go', 'stop', 'kill', 'eat'],
               'stop' : ['the', 'in', 'of', 'from', 'at', 'it'],
-              'numbers' : [i for i in range(0, 10)]}
+              'numbers' : [i for i in range(0, 10)]
+              }
 
 def getTag(word, LexiconDict):
     """

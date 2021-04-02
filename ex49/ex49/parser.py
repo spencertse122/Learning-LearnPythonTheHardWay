@@ -8,17 +8,22 @@ class ParserError(Exception):
 
 class Sentence(object):
     """
-    A sentence object to put the results in
+    A sentence object represent a regular sentense that has
+    a subject, an object, and a verb.
+
+    The sentence object takes tuples token instead of an actual word to create.
     """
     def __init__(self, subject, verb, obj):
         # remember we take ('noun', 'princess') tuples and convert them
-        self.subject = subject[1]
-        self.verb = verb[1]
+        self.subject = subject[1] # since it's a tuple, we have to index the second item (the actual word)
+        self.verb = verb[1] # and then it's a string
         self.object = obj[1]
 
 def peek(word_list):
     """
     A way to peek at a potential tuple so we can make some decisons
+
+    word_list should be list of token tuples.
     """
     if word_list:
         word = word_list[0]
@@ -35,7 +40,7 @@ def match(word_list, expecting):
         word = word_list.pop(0)
 
         if word[0] == expecting:
-            return words
+            return word
         else:
             return None
     else:
@@ -63,9 +68,27 @@ def parse_verb(word_list):
 def parse_object(word_list):
     skip(word_list, 'stop')
     next_word = peek(word_list)
-    if next_word = 'noun':
-        return match(word)list, 'noun')
+    if next_word == 'noun':
+        return match(word_list, 'noun')
     elif next_word == 'direction':
         return match(word_list, 'direction')
     else:
         raise ParserError("Expected a noun or direction next.")
+
+def parse_subject(word_list):
+    skip(word_list, 'stop')
+    next_word = peek(word_list)
+
+    if next_word == 'noun':
+        return match(word_list, 'noun')
+    elif next_word == 'verb':
+        return ('noun', 'player')
+    else:
+        raise ParseError("Expected a verb next.")
+
+def parse_sentence(word_list):
+    subj = parse_subject(word_list)
+    verb = parse_verb(word_list)
+    obj = parse_object(word_list)
+
+    return Sentence(subj, verb, obj)

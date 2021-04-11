@@ -2,8 +2,8 @@
 game_lexicon = {
               'direction' : ['north', 'south', 'east', 'west', 'down', 'up', 'left', 'right', 'back'],
               'verb' : ['go', 'stop', 'kill', 'eat'],
-              'stop' : ['the', 'in', 'of', 'from', 'at', 'it'],
-              'numbers' : [i for i in range(0, 10)]
+              'stop' : ['the', 'in', 'of', 'from', 'at', 'it', 'to'],
+              'number' : [i for i in range(0, 10)]
               }
 
 def getTag(word, LexiconDict):
@@ -21,6 +21,7 @@ def getTag(word, LexiconDict):
         except ValueError:
             # If it's not a number, try to see if it's within our lexicon
             try:
+                # Add es and s stripping
                 if word.lower() in LexiconDict.get(key):
                     tokenizedWord = (key, word)
                     break

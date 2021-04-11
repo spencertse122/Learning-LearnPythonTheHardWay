@@ -3,7 +3,7 @@ GOAL: produce a sentence object that has three attributes:
 Subject, Verb, Object
 """
 
-class ParserError(Exception):
+class ParseError(Exception):
     pass
 
 class Sentence(object):
@@ -51,8 +51,13 @@ def skip(word_list, word_type):
     a way to skip things we do not care about
     like stop words
     """
+    # The peek will look at the first item
+    # So if it's the word type is something we want to skip, we pop it
+    # popping it with the atch function
     while peek(word_list) == word_type:
         match(word_list, word_type)
+
+        # Once it finds it it will just break
 
 def parse_verb(word_list):
     """
@@ -73,7 +78,7 @@ def parse_object(word_list):
     elif next_word == 'direction':
         return match(word_list, 'direction')
     else:
-        raise ParserError("Expected a noun or direction next.")
+        raise ParseError("Expected a noun or direction next.")
 
 def parse_subject(word_list):
     skip(word_list, 'stop')

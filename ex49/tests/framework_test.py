@@ -2,10 +2,10 @@ import pytest
 from ex49 import lexicon
 
 def test_game_lexicon():
-    test_keys = ['direction', 'verb', 'stop', 'numbers']
+    test_keys = ['direction', 'verb', 'stop', 'number']
     test_values = [['north', 'south', 'east', 'west', 'down', 'up', 'left', 'right', 'back'],
                    ['go', 'stop', 'kill', 'eat'],
-                   ['the', 'in', 'of', 'from', 'at', 'it'],
+                   ['the', 'in', 'of', 'from', 'at', 'it', 'to'],
                    [i for i in range(0, 10)]]
 
     # Checking to see if the dictionary matched
@@ -16,8 +16,8 @@ def test_game_lexicon():
         count += 1
 
     # Checking the integers are within 0-9
-    assert max(lexicon.game_lexicon.get("numbers")) == 9
-    assert min(lexicon.game_lexicon.get("numbers")) == 0
+    assert max(lexicon.game_lexicon.get("number")) == 9
+    assert min(lexicon.game_lexicon.get("number")) == 0
 
 def test_getTag():
     """

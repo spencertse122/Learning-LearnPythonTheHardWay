@@ -15,6 +15,8 @@ class Room(object):
         self.paths = {}
 
 
+
+# A series of rooms
 central_corridor = Room("Central Corridor",
 """
 The Gothons of Planet Percal #25 have invaded your ship and destroyed

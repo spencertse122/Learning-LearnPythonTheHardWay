@@ -8,6 +8,7 @@
   {{ room.description }}
 </pre>
 
+<!-- if the room is equal to death or the end, it provide a url saying Play Again? directing to "/" -->
 {% if room.name in ["death", "The End"] %}
     <p><a href="/">Play Again?</a></p>
 {% else %}

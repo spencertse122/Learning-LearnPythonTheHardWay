@@ -1,9 +1,16 @@
-class Room(object):
+# importing libraries
+from random import randint
 
+class Room(object):
+    """
+    A Room object is the pieces to fill the map of the game.
+    """
     def __init__(self, name, description):
         self.name = name
         self.description = description
         self.paths = {}
+        self.little_game = lambda x=None : "No Game is Configured for this room"
+        self.game_outcome = None
 
     def go(self, direction):
         return self.paths.get(direction, None)
@@ -15,8 +22,7 @@ class Room(object):
         self.paths = {}
 
 
-
-# A series of rooms
+# Configuring the central_corridor
 central_corridor = Room("Central Corridor",
 """
 The Gothons of Planet Percal #25 have invaded your ship and destroyed
@@ -30,6 +36,8 @@ costume flowing around his hate filled body. He's blocking the door
 to the Armory and about to pull a weapon to blast you.
 """)
 
+
+# Configuring the laser_weapon_armory
 laser_weapon_armory = Room("Laser Weapon Armory",
 """
 LUcky for you they made you learn Gothon insults in the academy. You
@@ -47,6 +55,8 @@ code to get the bomb out. If you get the code wrong 10 times then the
 lock closes forever and you can't get the bomb. The code is 3 digits.
 """)
 
+
+# Configuring the_bridge, instant kill/  next scene
 the_bridge = Room("The Bridge",
 """
 The container clicks open and the seal breaks, letting gas out. You
@@ -60,6 +70,8 @@ pulled their weapons out yet, as they see the active bomb under your arm
 and don't want to set it off.
 """)
 
+
+# Configuring the escape_pod
 escape_pod = Room("Escape Pod",
 """
 You point your blaster at the bomb under your arm and the Gothons put
@@ -77,6 +89,9 @@ them could be damaged but you don't have time to look. There's 5 pods,
 which one do you take?
 """)
 
+
+
+# Configuring the_end_winner
 the_end_winner = Room("The End",
 """
 You jump into pod 2 and hit the eject button. The pod easily slides out
@@ -85,6 +100,7 @@ look back and see your ship implode then explode like a bright star,
 taking out the Gothon ship at the same time. You won!
 """)
 
+# Configuring the_end_loser
 the_end_loser = Room("The End",
 """
 You jump into a random pod and hit the eject button. The pod escapes
@@ -92,23 +108,28 @@ out into the void of space, then implodes as the hull ruptures, crushing
 your body into jam jelly.
 """)
 
+# Configuring the death scene
+generic_death = Room("death", "You died.")
+
 escape_pod.add_paths({
     '2': the_end_winner,
     '*': the_end_loser
 })
 
-generic_death = Room("death", "You died.")
 
 the_bridge.add_paths({
     'throw the bomb': the_bridge,
     'slowly place the bomb': escape_pod
 })
 
+
 central_corridor.add_paths({
     'shoot!': generic_death,
     'dodge!': generic_death,
     'tell a joke': laser_weapon_armory
 })
+
+
 
 START = 'central_corridor'
 
